@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Boss from './Boss.js';
 import Api from './Api';
-import LadyMaria from './Lady_Maria.gif';
+import LadyMaria from './images/Bloodborne/Lady_Maria.gif';
 import './App.css';
 
 class App extends Component {
@@ -26,12 +26,13 @@ class App extends Component {
     )
   }
 
+
   render() {
     const { name, image, description } = this.state;
     return (
       <div className="App">
           <button onClick={event => {this.handleClick(event)}}>Traverse the Fog</button>
-          <Boss name={name} description={description} image={image}/>
+          <Boss name={name} description={description} image={LadyMaria}/>
       </div>
     );
   }
