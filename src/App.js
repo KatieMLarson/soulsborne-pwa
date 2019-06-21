@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Boss from './Boss.js';
-import Api from './Api';
+import * as Requests from './Api';
 import LadyMaria from './images/Bloodborne/Lady_Maria.gif';
 import './App.css';
 
@@ -16,14 +16,12 @@ class App extends Component {
 
   handleClick(event) {
     event.preventDefault();
-    Api.getBoss().then(result => (
-      this.setState({
-        name: result.name,
-        image: result.image,
-        description: result.description
+    let boss = Requests.getBoss();
+    this.setState({
+        name: boss.name,
+        image: boss.image,
+        description: boss.description
        })
-      )
-    )
   }
 
 
@@ -32,7 +30,7 @@ class App extends Component {
     return (
       <div className="App">
           <button onClick={event => {this.handleClick(event)}}>Traverse the Fog</button>
-          <Boss name={name} description={description} image={LadyMaria}/>
+          <Boss name={name} description={description} image={image}/>
       </div>
     );
   }

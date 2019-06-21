@@ -1,6 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
 
-export const consumer_key = process.env.CONSUMER_KEY;
-export const consumer_secret = process.env.CONSUMER_SECRET;
-export const access_token = process.env.ACCESS_TOKEN;
-export const access_token_secret = process.env.ACCESS_TOKEN_SECRET;
+export const apiKey = process.env.API_KEY;
+export const discoveryDocs = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+export const spreadsheetId = "1yYmlS5tbeH6sx1aE6m7ISmxnIe9blppc3A4OAwef8ew";
