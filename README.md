@@ -1,3 +1,22 @@
+Rest at the bonfire! This is a little PWA that randomly generates Soulsborne bosses at the click of a button.
+
+It is indeed bootstrapped with Create React App, so you can use `npm start` to get it up and running at localhost:3000.
+Be aware: there are some bugs and known issues. It's a work in progress!
+
+Here's a short list:
+
+~It's not 100% offline. Run Lighthouse audit or throttle your internet to see
+
+~There are extra files. Originally this was designed to be much more complicated. It has since
+been simplified, but there's a lot of "fat" hanging off that could be developed out into future functionality.
+
+~BUG: you may run into issues with initial caching once you run npm start; images don'
+t appear to be cached. This bug is intermittent and appears only in development.
+
+Did you say production? This app is deployed at: https://soulsborne-boss-generator.firebaseapp.com/
+
+## Basic Create React App README
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
