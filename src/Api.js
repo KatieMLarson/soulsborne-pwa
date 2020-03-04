@@ -1,38 +1,37 @@
 import * as config from './config';
 
-export function getBoss() {
+export const getBoss =  () => {
   window.gapi.load("client", initClient);
 };
 
-export function initClient() {
-  console.log(config.apiKey);
+const initClient = () => {
   window.gapi.client
     .init({
       apiKey: config.apiKey,
       discoveryDocs: config.discoveryDocs
     })
-    .then(() => {
+    .then( () => {
       loadBoss();
+      console.log("Two")
   })
 }
 
-export let loadBoss = () => {
+const loadBoss = () => {
   window.gapi.client.load("sheets", "v4", () => {
     window.gapi.client.sheets.spreadsheets.values
       .get({
         spreadsheetId: config.spreadsheetId,
         range: "'Main'!A2:C49"
       })
-      .then(
-        response => {
-          const data = response.result.values;
-          console.log(data)
-          return data.map(boss => ({
-            name: boss[0],
-            image: boss[1],
-            description: boss[2]
-          })) || [];
+      .then(response => {
+          const boss = selectBoss(response.result.values);
+          console.log(boss + "hello")
+          return boss || [];
         },
       );
   });
+}
+
+const selectBoss = (bossArray) => {
+  return bossArray[Math.floor(Math.random() * bossArray.length)];
 }

@@ -1,38 +1,47 @@
 import React, { Component } from 'react';
 import Boss from './Boss.js';
-import * as Requests from './Api';
-import LadyMaria from './images/Bloodborne/Lady_Maria.gif';
 import './App.css';
+import defaultIcon from './images/Bloodborne/soulsborne-pwa-icon.jpg'
+
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "",
-      image: "",
-      description: ""
+      isBoss: false,
+      bossImage: ""
     }
   }
 
-  handleClick(event) {
-    event.preventDefault();
-    let boss = Requests.getBoss();
-    this.setState({
-        name: boss.name,
-        image: boss.image,
-        description: boss.description
-       })
-  }
-
+handleClick = async () => {
+    let bossy = await fetch(defaultIcon, {headers: {
+        'Content-Type': 'application/json'
+    }}).then((response) => {
+      return response;
+    }).catch(e => {console.log(e)
+    })
+  this.setState({
+    isBoss: true,
+      bossImage: bossy.url
+  })
+}
 
   render() {
-    const { name, image, description } = this.state;
+    const { isBoss, bossImage } = this.state;
+    if (isBoss) {
     return (
       <div className="App">
-          <button onClick={event => {this.handleClick(event)}}>Traverse the Fog</button>
-          <Boss name={name} description={description} image={image}/>
+          <Boss boss={bossImage}/>
+          <button onClick={this.handleClick}>Traverse the Fog</button>
       </div>
-    );
+    )
+    } else {
+      return (
+        <div className="App">
+          <button onClick={this.handleClick}>Traverse the Fog</button>
+        </div>
+      )
+    }
   }
 }
 

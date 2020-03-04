@@ -9,6 +9,23 @@
 
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
+const CACHE_NAME = 'bosses';
+const urlsToCache = [
+  '/',
+  '/images/Maria.png',
+  '/images/soulsborne-pwa-icon.jpg',
+  '/images/Eileen_animation.gif',
+  '/images/Father_Gascoigne.gif',
+  '/images/Gaping_dragon.gif',
+  '/images/Gywndolin.jpg',
+  '/images/moon_presence.gif',
+  '/images/Nameless_King.jpg',
+  '/images/Queelag.jpg',
+  '/images/Rakuyo.gif',
+  '/images/Sanctuary_guardian.jpg',
+  '/images/Sif.jpg',
+  '/images/Paarl.jpg'
+];
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -21,7 +38,8 @@ const isLocalhost = Boolean(
 );
 
 export function register(config) {
-  if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  console.log("Before the register", process.env.NODE_ENV)
+  if ('serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) {
@@ -32,8 +50,7 @@ export function register(config) {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
-
+      const swUrl = `${process.env.PUBLIC_URL}/souls-worker.js`;
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
@@ -41,6 +58,7 @@ export function register(config) {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
+
           console.log(
             'This web app is being served cache-first by a service ' +
               'worker. To learn more, visit https://bit.ly/CRA-PWA'
@@ -69,6 +87,13 @@ function registerValidSW(swUrl, config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
+              //
+              //     caches.open(CACHE_NAME)
+              //         .then(function(cache) {
+              //           console.log('Opened cache');
+              //           return cache.addAll(urlsToCache);
+              //         });
+
               console.log(
                 'New content is available and will be used when all ' +
                   'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
