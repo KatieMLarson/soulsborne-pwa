@@ -9,23 +9,6 @@
 
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
-const CACHE_NAME = 'bosses';
-const urlsToCache = [
-  '/',
-  '/images/Maria.png',
-  '/images/soulsborne-pwa-icon.jpg',
-  '/images/Eileen_animation.gif',
-  '/images/Father_Gascoigne.gif',
-  '/images/Gaping_dragon.gif',
-  '/images/Gywndolin.jpg',
-  '/images/moon_presence.gif',
-  '/images/Nameless_King.jpg',
-  '/images/Queelag.jpg',
-  '/images/Rakuyo.gif',
-  '/images/Sanctuary_guardian.jpg',
-  '/images/Sif.jpg',
-  '/images/Paarl.jpg'
-];
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -50,7 +33,7 @@ export function register(config) {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `${process.env.PUBLIC_URL}/souls-worker.js`;
+      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
