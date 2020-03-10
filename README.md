@@ -15,6 +15,15 @@ t appear to be cached. This bug is intermittent and appears only in development.
 
 Did you say production? This app is deployed at: https://soulsborne-boss-generator.firebaseapp.com/
 
+#### To run it offline in localhost. 
+
+The following builds a production ready static web app. 
+
+```$sh
+npm run build
+serve -s build
+```
+
 ## Basic Create React App README
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
